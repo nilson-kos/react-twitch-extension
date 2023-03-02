@@ -17,7 +17,7 @@ module.exports = {
     }),
     // Plugins dynamically add script tag to HTML file
     // that will include JS files
-    
+
     new HtmlWebpackPlugin({
       // Inserts Title tag to HTML template
       title: 'Video Overlay View',
@@ -42,6 +42,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      },
       // Extract CSS import to JS file to another file
       {
         test: /\.css$/,

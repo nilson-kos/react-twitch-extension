@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function onAuth(uid) {
@@ -16,11 +17,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function Hello(props) {
-  return React.createElement('div', null, 'Hello ', props.toWhat);
+function Hello() {
+  const [count, setCount] = useState(0);
+  return (
+      <>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>
+          Increment
+        </button>
+      </>
+  );
 }
 
 const root = createRoot(document.getElementById('root'));
-root.render(
-    React.createElement(Hello, { toWhat: 'World' }, null)
-);
+root.render(<Hello />, );
